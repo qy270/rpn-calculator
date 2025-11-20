@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPN 计算器使用手册</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .content {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RPN 计算器使用手册</h1>
+        <div class="content">
+            <h1>RPN 计算器使用手册</h1><p>这是一个基于逆波兰表示法（Reverse Polish Notation）的命令行计算器。</p><h2>1. 安装和编译指南</h2><pre class='code'><code>"# \xE7\xBC\x96\xE8\xAF\x91 C++ \xE7\xA8\x8B\xE5\xBA\x8F\x0Ag++ rpn_calc.cpp -o rpn_calc -std=c++11\x0A\x0A# \xE8\xBF\x90\xE8\xA1\x8C\xE7\xA8\x8B\xE5\xBA\x8F\x0A./rpn_calc\x0A"</code></pre><h2>2. 基本使用示例</h2><pre class='code'><code>"C++ RPN \xE8\xAE\xA1\xE7\xAE\x97\xE5\x99\xA8\x0A\xE8\xBE\x93\xE5\x85\xA5\xE8\xA1\xA8\xE8\xBE\xBE\xE5\xBC\x8F\xEF\xBC\x88\xE4\xBE\x8B\xEF\xBC\x8C\'5 5 +\'\xEF\xBC\x89\xEF\xBC\x8C\xE6\x88\x96 \'q\' \xE9\x80\x80\xE5\x87\xBA\xEF\xBC\x8C\'c\' \xE6\xB8\x85\xE7\xA9\xBA\xE6\xA0\x88\xEF\xBC\x8C\'s\' \xE6\x98\xBE\xE7\xA4\xBA\xE6\xA0\x88\x0A> 5 5 +\x0A\xE7\xBB\x93\xE6\x9E\x9C: 10\x0A> 1 2 + 3 *\x0A\xE7\xBB\x93\xE6\x9E\x9C: 9\x0A> 10 5 - 2 /\x0A\xE7\xBB\x93\xE6\x9E\x9C: 2.5\x0A"</code></pre><h2>3. 支持的操作说明</h2><p>✅ 四则运算: +, -, *, /</p><p>✅ 栈操作命令:</p><p>  - c 或 clear: 清空栈</p><p>  - s 或 show: 显示当前栈</p><p>  - q 或 quit: 退出程序</p><p>✅ 数字支持: 整数和浮点数</p><h2>4. 错误代码和异常说明</h2><p>🔴 栈空错误: 当尝试从空栈弹出元素时</p><p>🔴 除零错误: 当除数为零时</p><p>🔴 操作数不足: 当运算缺少足够操作数时</p><p>🔴 未知操作符: 当输入无法识别的操作符时</p><p>🔴 表达式不完整: 当表达式计算后栈中不止一个元素时</p><h2>5. 示例输入输出</h2><pre class='code'><code>"\xE7\xA4\xBA\xE4\xBE\x8B 1: \xE5\x9F\xBA\xE7\xA1\x80\xE8\xBF\x90\xE7\xAE\x97\x0A\xE8\xBE\x93\xE5\x85\xA5: 3 4 + 2 *\x0A\xE8\xBE\x93\xE5\x87\xBA: \xE7\xBB\x93\xE6\x9E\x9C: 14\x0A\x0A\xE7\xA4\xBA\xE4\xBE\x8B 2: \xE5\xA4\x8D\xE6\x9D\x82\xE8\xA1\xA8\xE8\xBE\xBE\xE5\xBC\x8F  \x0A\xE8\xBE\x93\xE5\x85\xA5: 15 7 1 1 + - / 3 * 2 1 1 + + -\x0A\xE8\xBE\x93\xE5\x87\xBA: \xE7\xBB\x93\xE6\x9E\x9C: 5\x0A\x0A\xE7\xA4\xBA\xE4\xBE\x8B 3: \xE9\x94\x99\xE8\xAF\xAF\xE5\xA4\x84\xE7\x90\x86\x0A\xE8\xBE\x93\xE5\x85\xA5: 5 0 /\x0A\xE8\xBE\x93\xE5\x87\xBA: \xE9\x94\x99\xE8\xAF\xAF: \xE9\x99\xA4\xE9\x9B\xB6\xE9\x94\x99\xE8\xAF\xAF\x0A\x0A\xE7\xA4\xBA\xE4\xBE\x8B 4: \xE6\xA0\x88\xE6\x93\x8D\xE4\xBD\x9C\x0A\xE8\xBE\x93\xE5\x85\xA5: 1 2 3\x0A\xE8\xBE\x93\xE5\x85\xA5: s\x0A\xE8\xBE\x93\xE5\x87\xBA: \xE5\xBD\x93\xE5\x89\x8D\xE6\xA0\x88: 1 2 3 \x0A\xE8\xBE\x93\xE5\x85\xA5: +\x0A\xE8\xBE\x93\xE5\x87\xBA: \xE7\xBB\x93\xE6\x9E\x9C: 5\x0A"</code></pre><h2>6. 技术实现</h2><p>📋 编程语言: C++</p><p>📋 核心类: RPNCalculator</p><p>📋 主要方法: push(), pop(), calculate(), showStack()</p><p>📋 编译要求: C++11 或更高版本</p>
+        </div>
+        <div class="footer">
+            生成时间: 2025-11-13 08:55:31 | 使用 Simple Nim Doc 生成
+        </div>
+    </div>
+</body>
+</html>
